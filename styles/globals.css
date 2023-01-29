@@ -31,7 +31,7 @@ select {
 }
 
 body {
-  background-image: url('../styles/shoe44.jpeg');
+  background-image: url('../public/shoe44.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
