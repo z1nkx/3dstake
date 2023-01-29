@@ -27,3 +27,4 @@ npx thirdweb create --template edition-staking-app
 
 For any questions, suggestions, join our discord at [https://discord.gg/thirdweb](https://discord.gg/thirdweb).
 # 3dstake
+# 3DSTAKING
