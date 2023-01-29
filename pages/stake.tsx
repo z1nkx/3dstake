@@ -11,6 +11,7 @@ import {
 } from "@thirdweb-dev/react";
 import { BigNumber, ethers } from "ethers";
 import type { NextPage } from "next";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import NFTCard from "../components/NFTCard";
 import {
@@ -129,9 +130,9 @@ const Stake: NextPage = () => {
                 {nft.metadata && (
             <>
                  {nft.metadata.image ? (
-                   <img src={nft.metadata.image} className={styles.nftMedia} alt="NFT cover" />
+                   <Image src={nft.metadata.image} className={styles.nftMedia} alt="NFT cover" />
                     ) : (
-                  <img className={styles.nftMedia} alt="default NFT cover" />
+                  <Image className={styles.nftMedia} alt="default NFT cover" src={""} />
                    )}
                   </>
                  )}

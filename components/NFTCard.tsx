@@ -4,6 +4,7 @@ import {
   useNFT,
   Web3Button,
 } from "@thirdweb-dev/react";
+import Image from "next/image";
 import type { FC } from "react";
 import {
   editionDropContractAddress,
@@ -26,9 +27,9 @@ const NFTCard: FC<NFTCardProps> = ({ tokenId }) => {
           {nft.metadata && (
             <>
               {nft.metadata.image ? (
-                <img src={nft.metadata.image} className={styles.nftMedia} alt="NFT cover" />
+                <Image src={nft.metadata.image} className={styles.nftMedia} alt="NFT cover" />
               ) : (
-                <img className={styles.nftMedia} alt="default NFT cover" />
+                <Image className={styles.nftMedia} alt="default NFT cover" src={""} />
               )}
               <h3>{nft.metadata.name}</h3>
               <Web3Button
