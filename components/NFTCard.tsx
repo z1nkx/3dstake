@@ -21,25 +21,29 @@ const NFTCard: FC<NFTCardProps> = ({ tokenId }) => {
 
   return (
     <>
-      {nft && (
+    {nft && (
         <div className={styles.nftBox}>
           {nft.metadata && (
-            <ThirdwebNftMedia
-              metadata={nft.metadata}
-              className={styles.nftMedia}
-            />
+            <>
+              {nft.metadata.image ? (
+                <img src={nft.metadata.image} className={styles.nftMedia} alt="NFT cover" />
+              ) : (
+                <img className={styles.nftMedia} alt="default NFT cover" />
+              )}
+              <h3>{nft.metadata.name}</h3>
+              <Web3Button
+                action={(contract) =>
+                  contract?.call("withdraw", nft.metadata.id, 1)
+                }
+                contractAddress={stakingContractAddress}
+              >
+                Withdraw
+              </Web3Button>
+            </>
           )}
-          <h3>{nft.metadata.name}</h3>
-          <Web3Button
-            action={(contract) =>
-              contract?.call("withdraw", nft.metadata.id, 1)
-            }
-            contractAddress={stakingContractAddress}
-          >
-            Withdraw
-          </Web3Button>
         </div>
       )}
+
     </>
   );
 };

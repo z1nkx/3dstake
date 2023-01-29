@@ -24,20 +24,28 @@ select {
 }
 
 :root {
-  --black: #1c1e21;
+  --black: #000000;
   --white: #ffffff;
   --tw-color1: #a855f7;
   --tw-color1-hover: #9333ea;
 }
 
 body {
-  background: var(--black);
-  font-family: "Inter", sans-serif;
+  background-image: url('../styles/shoe44.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  font-family: "Monoid", monospace;
   color: var(--white);
   display: flex;
   margin: 0;
   text-align: center;
 }
+
+
+
+
 
 h2 {
   font-size: 2rem;

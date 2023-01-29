@@ -74,14 +74,14 @@ const Stake: NextPage = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.h1}>Stake Your NFTs</h1>
+      <h1 className={styles.h1}>STAKE YOUR NFTS</h1>
       <hr className={`${styles.divider} ${styles.spacerTop}`} />
 
       {!address ? (
         <ConnectWallet />
       ) : (
         <>
-          <h2>Your Tokens</h2>
+          <h2>YOUR TOKENS</h2>
           <div className={styles.tokenGrid}>
             <div className={styles.tokenItem}>
               <h3 className={styles.tokenLabel}>Claimable Rewards</h3>
@@ -110,7 +110,7 @@ const Stake: NextPage = () => {
           </Web3Button>
 
           <hr className={`${styles.divider} ${styles.spacerTop}`} />
-          <h2>Your Staked NFTs</h2>
+          <h2>STAKED NFTS</h2>
           <div className={styles.nftBoxGrid}>
             {stakedTokens &&
               stakedTokens[0]?.map((stakedToken: BigNumber) => (
@@ -122,14 +122,20 @@ const Stake: NextPage = () => {
           </div>
 
           <hr className={`${styles.divider} ${styles.spacerTop}`} />
-          <h2>Your Unstaked NFTs</h2>
+          <h2>UNSTAKED NFTS</h2>
           <div className={styles.nftBoxGrid}>
             {ownedNfts?.map((nft) => (
               <div className={styles.nftBox} key={nft.metadata.id.toString()}>
-                <ThirdwebNftMedia
-                  metadata={nft.metadata}
-                  className={styles.nftMedia}
-                />
+                {nft.metadata && (
+            <>
+                 {nft.metadata.image ? (
+                   <img src={nft.metadata.image} className={styles.nftMedia} alt="NFT cover" />
+                    ) : (
+                  <img className={styles.nftMedia} alt="default NFT cover" />
+                   )}
+                  </>
+                 )}
+
                 <h3>{nft.metadata.name}</h3>
                 <Web3Button
                   contractAddress={stakingContractAddress}
