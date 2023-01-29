@@ -27,9 +27,9 @@ const NFTCard: FC<NFTCardProps> = ({ tokenId }) => {
           {nft.metadata && (
             <>
               {nft.metadata.image ? (
-                <Image src={nft.metadata.image} className={styles.nftMedia} alt="NFT cover" />
+                <img src={nft.metadata.image} className={styles.nftMedia} alt="NFT cover" />
               ) : (
-                <Image className={styles.nftMedia} alt="default NFT cover" src={""} />
+                <img className={styles.nftMedia} alt="default NFT cover" src={""} />
               )}
               <h3>{nft.metadata.name}</h3>
               <Web3Button
