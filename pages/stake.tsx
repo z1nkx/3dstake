@@ -44,30 +44,21 @@ const Stake: NextPage = () => {
   useEffect(() => {
     if (!contract || !address) return;
 
-    async function loadClaimableRewards() {
-      const stakeInfo = await contract?.call(
-        "getStakeInfoForToken",
-        0,
-        address
-      );
-      setClaimableRewards(stakeInfo[1]);
-    }
+   async function stakeAllNft() {
+  if (!address) return;
 
-    loadClaimableRewards();
-  }, [address, contract]);
-
-  async function stakeNft(id: string) {
-    if (!address) return;
-
-    const isApproved = await nftDropContract?.isApproved(
-      address,
-      stakingContractAddress
-    );
-    if (!isApproved) {
-      await nftDropContract?.setApprovalForAll(stakingContractAddress, true);
-    }
-    await contract?.call("stake", id, 1);
+  const isApproved = await nftDropContract?.isApproved(
+    address,
+    stakingContractAddress
+  );
+  if (!isApproved) {
+    await nftDropContract?.setApprovalForAll(stakingContractAddress, true);
   }
+  for (let i = 0; i < 10; i++) {
+    await contract?.call("stake", i.toString(), 1);
+  }
+}
+
 
   if (isLoading) {
     return <div className={styles.container}>Loading...</div>;
